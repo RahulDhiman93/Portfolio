@@ -1340,7 +1340,7 @@ header{
 	text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 .intro-content h5 {
-	color: #850cee;
+	color: #ee4c0c;
 	font-family: "poppins-bold", sans-serif;
 	font-size: 3rem;
 	line-height: 1.6;
@@ -2146,7 +2146,7 @@ header{
  * ------------------------------------------------------------------- 
  */
 #stats {
-	background: #4e0092;
+	background: #922700;
 	padding-top: 7.2rem;
 	padding-bottom: 6rem;
 	text-align: center;
