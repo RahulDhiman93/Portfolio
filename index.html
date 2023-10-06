@@ -227,22 +227,23 @@
 				.then((data) => {
 					// Filter events to include only PushEvents (commits)
 					const pushEvents = data;
+					pushEvents.reverse();
 
 					// Group commits by month
-					const commitsByMonth = {};
+					const commits = {};
 					pushEvents.forEach((event) => {
 						const date = new Date(event.created_at);
-						const yearMonth = date.toISOString().slice(0, 7);
-						if (!commitsByMonth[yearMonth]) {
-							commitsByMonth[yearMonth] = 1;
+						const yearMonth = date.toISOString().slice(0, 10);
+						if (!commits[yearMonth]) {
+							commits[yearMonth] = 1;
 						} else {
-							commitsByMonth[yearMonth]++;
+							commits[yearMonth]++;
 						}
 					});
 
 					// Extract labels (months) and data (commit counts)
-					const labels = Object.keys(commitsByMonth);
-					const values = Object.values(commitsByMonth);
+					const labels = Object.keys(commits);
+					const values = Object.values(commits);
 
 					// Create a bar chart
 					const ctx = document.getElementById("contributionsChart").getContext("2d");
