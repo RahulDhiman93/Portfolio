@@ -2228,6 +2228,12 @@ header{
 #contact .section-intro p {
 	color: rgba(255, 255, 255, 0.7);
 }
+#contact a {
+	color: rgba(255, 255, 255, 0.7);;
+}
+#contact a:hover {
+	color: #cc3a00;
+}
 
 /* contact form */
 .contact-form {
