@@ -231,13 +231,17 @@
 
 					// Group commits by month
 					const commits = {};
+					maxEvents = 5
 					pushEvents.forEach((event) => {
-						const date = new Date(event.created_at);
-						const yearMonth = date.toISOString().slice(0, 10);
-						if (!commits[yearMonth]) {
-							commits[yearMonth] = 1;
-						} else {
-							commits[yearMonth]++;
+						if (maxEvents > 0) {
+							const date = new Date(event.created_at);
+							const yearMonth = date.toISOString().slice(0, 10);
+							if (!commits[yearMonth]) {
+								commits[yearMonth] = 1;
+								maxEvents--
+							} else {
+								commits[yearMonth]++;
+							}
 						}
 					});
 
