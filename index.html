@@ -212,7 +212,7 @@
 
 		</div>
 
-		<div class="github-container">
+		<div class="github-container" id="github-box">
 			<h1 style="text-align: center;">GitHub Contributions</h1>
 			<canvas id="contributionsChart"></canvas>
 		</div>
@@ -227,21 +227,20 @@
 				.then((data) => {
 					// Filter events to include only PushEvents (commits)
 					const pushEvents = data;
+					if (pushEvents.length > 6) {
+						pushEvents.length = 6;
+					}
 					pushEvents.reverse();
 
 					// Group commits by month
 					const commits = {};
-					maxEvents = 5
 					pushEvents.forEach((event) => {
-						if (maxEvents > 0) {
-							const date = new Date(event.created_at);
-							const yearMonth = date.toISOString().slice(0, 10);
-							if (!commits[yearMonth]) {
-								commits[yearMonth] = 1;
-								maxEvents--
-							} else {
-								commits[yearMonth]++;
-							}
+						const date = new Date(event.created_at);
+						const yearMonth = date.toISOString().slice(0, 10);
+						if (!commits[yearMonth]) {
+							commits[yearMonth] = 1;
+						} else {
+							commits[yearMonth]++;
 						}
 					});
 
@@ -275,6 +274,8 @@
 				})
 				.catch((error) => {
 					console.error("Error fetching GitHub data: ", error);
+					chart = document.getElementById("github-box")
+					chart.style.display = "none"
 				});
 		</script>
 
