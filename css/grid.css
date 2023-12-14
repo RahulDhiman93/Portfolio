@@ -9,7 +9,7 @@
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.1);
+    box-shadow: 0 2px 4px rgba(0.1, 0.1, 0.1, 0.2);
     display: flex;
     align-items: center; /* Vertically center the content */
     -webkit-transition: all 0.5s ease-in-out;
@@ -18,7 +18,7 @@
 }
 
 .project:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow on hover */
     -webkit-transform: scale(1.05);
 	-ms-transform: scale(1.05);
 	transform: scale(1.05);
@@ -34,6 +34,7 @@
 }
 
 .project-description {
+    font-size: 16px;
     flex: 2; /* Takes up two-thirds of the available space */
 }
 
@@ -41,7 +42,6 @@
     font-size: 18px;
     color: #333;
     margin-bottom: 5px;
-    
 }
 
 .project-title {
