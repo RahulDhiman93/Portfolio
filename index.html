@@ -213,7 +213,7 @@
 		</div>
 
 		<div class="github-container" id="github-box">
-			<h1 style="text-align: center;">GitHub Contributions</h1>
+			<h1 style="text-align: center;"><a href="https://github.com/rahuldhiman93" target="_blank">GitHub Contributions</a></h1>
 			<canvas id="contributionsChart"></canvas>
 		</div>
 
@@ -221,34 +221,30 @@
 			const username = "rahuldhiman93";
 			const apiUrl = `https://api.github.com/users/${username}/events`;
 
-			// Fetch GitHub data
 			fetch(apiUrl)
 				.then((response) => response.json())
 				.then((data) => {
-					// Filter events to include only PushEvents (commits)
 					const pushEvents = data;
-					if (pushEvents.length > 15) {
-						pushEvents.length = 15;
-					}
-					pushEvents.reverse();
-
-					// Group commits by month
 					const commits = {};
+					var count = 0
+
 					pushEvents.forEach((event) => {
 						const date = new Date(event.created_at);
 						const yearMonth = date.toISOString().slice(0, 10);
-						if (!commits[yearMonth]) {
-							commits[yearMonth] = 1;
-						} else {
-							commits[yearMonth]++;
+						const formattedDate = formatDate(yearMonth);
+						if (count < 6) {
+							if (!commits[formattedDate] && count < 6) {
+								commits[formattedDate] = 1;
+								count++;
+							} else {
+								commits[formattedDate]++;
+							}
 						}
 					});
 
-					// Extract labels (months) and data (commit counts)
-					const labels = Object.keys(commits);
-					const values = Object.values(commits);
+					const labels = Object.keys(commits).reverse();
+					const values = Object.values(commits).reverse();
 
-					// Create a bar chart
 					const ctx = document.getElementById("contributionsChart").getContext("2d");
 					new Chart(ctx, {
 						type: 'bar',
@@ -267,6 +263,13 @@
 								y: {
 									beginAtZero: true,
 									stepSize: 1
+								},
+								x: {
+									ticks: {
+										font: {
+											weight: 'bold'
+										}
+									}
 								}
 							}
 						}
@@ -277,6 +280,14 @@
 					chart = document.getElementById("github-box")
 					chart.style.display = "none"
 				});
+
+				function formatDate(inputDate) {
+					const date = new Date(inputDate);
+					const day = date.getDate();
+					const month = date.toLocaleString('default', { month: 'short' });
+					const year = date.getFullYear() % 100;
+					return `${day} ${month}, ${year}`;
+				}
 		</script>
 
 		<div class="row button-section">
