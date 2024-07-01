@@ -3056,3 +3056,77 @@ footer .copyright span:last-child::after {
 #go-top a:hover {
 	background: #000000;
 }
+
+/* Container for the column */
+.col-six {
+	padding: 10px;
+}
+
+/* Link styling */
+.project {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Card styling */
+.card {
+	background: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+	color: #1e1e1e;
+	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	margin-bottom: 10px;
+	/* Space between the card and the project description */
+}
+
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Card content */
+.card-content {
+	padding: 20px;
+	text-align: center;
+}
+
+/* Title */
+.card-title {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 10px;
+	background: #cc3a00;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Description */
+.card-description {
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+/* Tech stack */
+.card-tech-stack {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+/* Tech items */
+.tech-item {
+	background: #333;
+	border-radius: 5px;
+	padding: 5px 10px;
+	font-size: 12px;
+	color: #f1f1f1;
+}
+
+/* Project description */
+.project-description {
+	text-align: center;
+	font-size: 12px;
+	color: #888;
+	margin-top: 10px;
+}
